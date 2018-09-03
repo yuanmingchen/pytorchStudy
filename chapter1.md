@@ -84,9 +84,8 @@ $$out(N_i, C_{out_j})=bias(C_{out_j})+\sum^{C_{in}-1}{k=0}weight(C{out_j},k)\big
 * bias\(bool, optional\) - 如果bias=True，添加偏置
 
 shape:  
-input: \(N,C_in,H\_in,W\_in\)   
-output: \(N,C\_out,H\_out,W\_out\)  
-_
+input: \(N,C_in,H\_in,W\_in\)  
+output: \(N,C\_out,H\_out,W\_out\)  _
 
-$$W_{out}=floor((W_{in}+2padding[1]-dilation[1](kernerl_size[1]-1)-1)/stride[1]+1)$$
+$$x = y$$
 
