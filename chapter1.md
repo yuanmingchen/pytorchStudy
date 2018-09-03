@@ -87,5 +87,5 @@ shape:
 input: \(N,C_in,H\_in,W\_in\)  
 output: \(N,C\_out,H\_out,W\_out\)  _
 
-$$x = y$$
+$$H_{out}=floor((H_{in}+2padding[0]-dilation[0](kernerl_size[0]-1)-1)/stride[0]+1)$$
 
