@@ -1,5 +1,7 @@
 # 1、第一章 cnn
 
+首先看一个CNN的实现过程：
+
 ```py
 class CNN(nn.Module):
     def __init__(self):
@@ -30,6 +32,18 @@ class CNN(nn.Module):
         output = self.out(x)
         return output, x    # return x for visualization
 ```
+
+上面的卷积神经网络有两个卷积层（即self.conv1和self.conv2）和一个输出层
+
+
+
+
+
+## 2、函数讲解
+
+### nn.Sequential\(\* args\)： {#class-torchnnsequential-args}
+
+
 
 
 
