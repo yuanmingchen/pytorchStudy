@@ -60,6 +60,7 @@ model = nn.Sequential(OrderedDict([
           ('relu2', nn.ReLU())
         ]))
 ```
+总之就是当数据进入`Sequential`所定义的神经层时候，就会把数据交给`Sequential`的模块依次进行处理，最后进行输出
 
 ### （2）class torch.nn.Conv2d\(in\_channels, out\_channels, kernel\_size, stride=1, padding=0, dilation=1, groups=1, bias=True\)
 shape:
