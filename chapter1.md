@@ -83,12 +83,10 @@ $$out(N_i, C_{out_j})=bias(C_{out_j})+\sum^{C_{in}-1}{k=0}weight(C{out_j},k)\big
 * groups\(int, optional\) – 从输入通道到输出通道的阻塞连接数
 * bias\(bool, optional\) - 如果bias=True，添加偏置
 
-shape:
-input: (N,C_in,H_in,W_in) 
-output: (N,C_out,H_out,W_out)
-$$H_{out}=floor((H_{in}+2padding[0]-dilation[0](kernerl_size[0]-1)-1)/stride[0]+1)$$
+shape:  
+input: \(N,C_in,H\_in,W\_in\)   
+output: \(N,C\_out,H\_out,W\_out\)  
+_
 
 $$W_{out}=floor((W_{in}+2padding[1]-dilation[1](kernerl_size[1]-1)-1)/stride[1]+1)$$
-
-
 
