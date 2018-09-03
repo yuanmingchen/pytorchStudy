@@ -63,7 +63,23 @@ model = nn.Sequential(OrderedDict([
 
 ### （2）class torch.nn.Conv2d\(in\_channels, out\_channels, kernel\_size, stride=1, padding=0, dilation=1, groups=1, bias=True\)
 
+**说明**  
+`bigotimes`: 表示二维的相关系数计算`stride`: 控制相关系数的计算步长  
+`dilation`: 用于控制内核点之间的距离，详细描述在[这里](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)  
+`groups`: 控制输入和输出之间的连接：`group=1`，输出是所有的输入的卷积；`group=2`，此时相当于有并排的两个卷积层，每个卷积层计算输入通道的一半，并且产生的输出是输出通道的一半，随后将这两个输出连接起来。
 
+参数`kernel_size`，`stride,padding`，`dilation`也可以是一个`int`的数据，此时卷积height和width值相同;也可以是一个`tuple`数组，`tuple`的第一维度表示height的数值，tuple的第二维度表示width的数值
+
+参数：
+
+* in\_channels\(int\) – 输入信号的通道
+* out\_channels\(int\) – 卷积产生的通道
+* kerner\_size\(int or tuple\) - 卷积核的尺寸
+* stride\(int or tuple, optional\) - 卷积步长
+* padding\(int or tuple, optional\) - 输入的每一条边补充0的层数
+* dilation\(int or tuple, optional\) – 卷积核元素之间的间距
+* groups\(int, optional\) – 从输入通道到输出通道的阻塞连接数
+* bias\(bool, optional\) - 如果bias=True，添加偏置
 
 
 
