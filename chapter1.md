@@ -94,3 +94,9 @@ $$H_{out}=floor((H_{in}+2padding[0]-dilation[0](kernerl_size[0]-1)-1)/stride[0]+
 
 $$W_{out}=floor((W_{in}+2padding[1]-dilation[1](kernerl_size[1]-1)-1)/stride[1]+1)$$
 
+### （3）class torch.nn.ReLU(inplace=False)
+对输入运用修正线性单元函数$${ReLU}(x)= max(0, x)$$，shape：
+
+* 输入：$$(N, )$$，代表任意数目附加维度
+* 输出：$$(N, *)$$，与输入拥有同样的shape属性
+
