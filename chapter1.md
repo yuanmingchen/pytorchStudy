@@ -79,7 +79,7 @@ $$out(N_i, C_{out_j})=bias(C_{out_j})+\sum^{C_{in}-1}{k=0}weight(C{out_j},k)\big
 
 * in\_channels\(int\) – 输入信号的通道（黑白图片信道数为1）
 * out\_channels\(int\) – 卷积产生的通道（输出信道数）
-* kerner\_size\(int or tuple\) - 卷积核的尺寸
+* kerner\_size\(int or tuple\) - 卷积核的尺寸，扫描器的长宽
 * stride\(int or tuple, optional\) - 卷积步长
 * padding\(int or tuple, optional\) - 输入的每一条边补充0的层数
 * dilation\(int or tuple, optional\) – 卷积核元素之间的间距
