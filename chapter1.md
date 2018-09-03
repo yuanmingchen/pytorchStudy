@@ -78,9 +78,9 @@ $$out(N_i, C_{out_j})=bias(C_{out_j})+\sum^{C_{in}-1}{k=0}weight(C{out_j},k)\big
 
 参数：
 
-* in\_channels\(int\) – 输入信号的通道（黑白图片信道数为1）
-* out\_channels\(int\) – 卷积产生的通道（输出信道数）
-* kerner\_size\(int or tuple\) - 卷积核的尺寸，扫描器的长宽
+* in\_channels\(int\) – 输入信号的通道（黑白图片信道数为1），**必须参数**
+* out\_channels\(int\) – 卷积产生的通道（输出信道数）**必须参数**
+* kerner\_size\(int or tuple\) - 卷积核的尺寸，扫描器的长宽 **必须参数**
 * stride\(int or tuple, optional\) - 卷积步长，相邻两次扫描的间隔
 * padding\(int or tuple, optional\) - 输入的每一条边补充0的层数，为输入加上一圈边框，为了扫描之后输出的宽高与原来一样，以stride=5为例，而图片也是7\*7的，那么输出的宽高就成了3\*3,宽高减少了\(kerner\_size-1\)个，由于每次步长为1，所以每多加一个像素就可以让长宽加一,所以此时padding = \(kerner\_size-1\)/2(因为左右都要加边框，所以除以2)
 * dilation\(int or tuple, optional\) – 卷积核元素之间的间距
@@ -100,4 +100,4 @@ $$W_{out}=floor((W_{in}+2padding[1]-dilation[1](kernerl_size[1]-1)-1)/stride[1]+
 
 * 输入：$$(N, )$$，代表任意数目附加维度
 * 输出：$$(N, *)$$，与输入拥有同样的shape属性
-
+### （4）
