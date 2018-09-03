@@ -62,7 +62,10 @@ model = nn.Sequential(OrderedDict([
 ```
 
 ### （2）class torch.nn.Conv2d\(in\_channels, out\_channels, kernel\_size, stride=1, padding=0, dilation=1, groups=1, bias=True\)
-
+shape:
+输入: (N,C_in,L_in) 
+输出: (N,C_out,L_out) 
+输入输出的计算方式： 
 $$out(N_i, C_{out_j})=bias(C_{out_j})+\sum^{C_{in}-1}{k=0}weight(C{out_j},k)\bigotimes input(N_i,k)$$
 
 **说明**  
@@ -88,4 +91,6 @@ input: \(N,C_in,H\_in,W\_in\)
 output: \(N,C\_out,H\_out,W\_out\)  _
 
 $$H_{out}=floor((H_{in}+2padding[0]-dilation[0](kernerl_size[0]-1)-1)/stride[0]+1)$$
+
+$$W_{out}=floor((W_{in}+2padding[1]-dilation[1](kernerl_size[1]-1)-1)/stride[1]+1)$$
 
