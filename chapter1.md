@@ -63,6 +63,8 @@ model = nn.Sequential(OrderedDict([
 
 ### （2）class torch.nn.Conv2d\(in\_channels, out\_channels, kernel\_size, stride=1, padding=0, dilation=1, groups=1, bias=True\)
 
+$$out(N_i, C_{out_j})=bias(C_{out_j})+\sum^{C_{in}-1}{k=0}weight(C{out_j},k)\bigotimes input(N_i,k)$$
+
 **说明**  
 `bigotimes`: 表示二维的相关系数计算`stride`: 控制相关系数的计算步长  
 `dilation`: 用于控制内核点之间的距离，详细描述在[这里](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)  
