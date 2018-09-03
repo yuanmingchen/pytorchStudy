@@ -33,15 +33,35 @@ class CNN(nn.Module):
         return output, x    # return x for visualization
 ```
 
-上面的卷积神经网络有两个卷积层（即self.conv1和self.conv2）和一个输出层
-
-
-
-
+上面的卷积神经网络有两个卷积层（即self.conv1和self.conv2）和一个输出层。
 
 ## 2、函数讲解
 
-### nn.Sequential\(\* args\)： {#class-torchnnsequential-args}
+### （1）nn.Sequential\(\* args\)： {#class-torchnnsequential-args}
+
+这是一个时序容器。`Modules`会以他们传入的顺序被添加到容器中。当然，也可以传入一个`OrderedDict`。
+
+为了更容易的理解如何使用`Sequential`, 下面给出了一个例子:
+
+```py
+# Example of using Sequential
+
+model = nn.Sequential(
+          nn.Conv2d(1,20,5),
+          nn.ReLU(),
+          nn.Conv2d(20,64,5),
+          nn.ReLU()
+        )
+# Example of using Sequential with OrderedDict
+model = nn.Sequential(OrderedDict([
+          ('conv1', nn.Conv2d(1,20,5)),
+          ('relu1', nn.ReLU()),
+          ('conv2', nn.Conv2d(20,64,5)),
+          ('relu2', nn.ReLU())
+        ]))
+```
+
+### （2）class torch.nn.Conv2d\(in\_channels, out\_channels, kernel\_size, stride=1, padding=0, dilation=1, groups=1, bias=True\)
 
 
 
