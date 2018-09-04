@@ -28,7 +28,7 @@ pytorch的数据类型是`torch.Tensor`，\(`torch.Tensor`是默认的tensor类�
 如何创建一个`torch.Tensor`？一个张量tensor可以从Python的`list`或序列构建：
 
 ```
->>> torch.FloatTensor([[1, 2, 3], [4, 5, 6]])
+>>> torch.FloatTensor([[1, 2, 3], [4, 5, 6]]) #一般都使用torch.FloatTensor，支持小数
 1 2 3
 4 5 6
 [torch.FloatTensor of size 2x3]
