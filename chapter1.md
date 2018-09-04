@@ -60,14 +60,18 @@ model = nn.Sequential(OrderedDict([
           ('relu2', nn.ReLU())
         ]))
 ```
+
 总之就是当数据进入`Sequential`所定义的神经层时候，就会把数据交给`Sequential`的模块依次进行处理，最后进行输出
 
 ### （2）class torch.nn.Conv2d\(in\_channels, out\_channels, kernel\_size, stride=1, padding=0, dilation=1, groups=1, bias=True\)
-shape:
-输入: (N,C_in,L_in) 
-输出: (N,C_out,L_out) 
-输入输出的计算方式： 
-$$out(N_i, C_{out_j})=bias(C_{out_j})+\sum^{C_{in}-1}{k=0}weight(C{out_j},k)\bigotimes input(N_i,k)$$
+
+shape:  
+输入: $$ (N,C_{in},H_{in},W_{in}) $$  
+输出: $$(N,C_{out},H_{out},W_{out})$$  
+输入输出的计算方式：  
+$$H_{out}=floor((H_{in}+2padding[0]-dilation[0](kernerl_size[0]-1)-1)/stride[0]+1)$$
+
+$$x = y$$
 
 **说明**  
 `bigotimes`: 表示二维的相关系数计算`stride`: 控制相关系数的计算步长  
@@ -82,22 +86,30 @@ $$out(N_i, C_{out_j})=bias(C_{out_j})+\sum^{C_{in}-1}{k=0}weight(C{out_j},k)\big
 * out\_channels\(int\) – 卷积产生的通道（输出信道数）**必须参数**
 * kerner\_size\(int or tuple\) - 卷积核的尺寸，扫描器的长宽 **必须参数**
 * stride\(int or tuple, optional\) - 卷积步长，相邻两次扫描的间隔
-* padding\(int or tuple, optional\) - 输入的每一条边补充0的层数，为输入加上一圈边框，为了扫描之后输出的宽高与原来一样，以stride=5为例，而图片也是7\*7的，那么输出的宽高就成了3\*3,宽高减少了\(kerner\_size-1\)个，由于每次步长为1，所以每多加一个像素就可以让长宽加一,所以此时padding = \(kerner\_size-1\)/2(因为左右都要加边框，所以除以2)
+* padding\(int or tuple, optional\) - 输入的每一条边补充0的层数，为输入加上一圈边框，为了扫描之后输出的宽高与原来一样，以stride=5为例，而图片也是7\*7的，那么输出的宽高就成了3\*3,宽高减少了\(kerner\_size-1\)个，由于每次步长为1，所以每多加一个像素就可以让长宽加一,所以此时padding = \(kerner\_size-1\)/2\(因为左右都要加边框，所以除以2\)
 * dilation\(int or tuple, optional\) – 卷积核元素之间的间距
 * groups\(int, optional\) – 从输入通道到输出通道的阻塞连接数
 * bias\(bool, optional\) - 如果bias=True，添加偏置
 
 shape:  
-input: \(N,C_in,H\_in,W\_in\)  
-output: \(N,C\_out,H\_out,W\_out\)  _
+input: $$(N,C_{in},H\_in,W_{in})$$   
+output: $$(N,C_{out},H_{out},W_{out})$$
 
 $$H_{out}=floor((H_{in}+2padding[0]-dilation[0](kernerl_size[0]-1)-1)/stride[0]+1)$$
 
 $$W_{out}=floor((W_{in}+2padding[1]-dilation[1](kernerl_size[1]-1)-1)/stride[1]+1)$$
 
-### （3）class torch.nn.ReLU(inplace=False)
+### （3）class torch.nn.ReLU\(inplace=False\)
+
 对输入运用修正线性单元函数$${ReLU}(x)= max(0, x)$$，shape：
 
 * 输入：$$(N, )$$，代表任意数目附加维度
 * 输出：$$(N, *)$$，与输入拥有同样的shape属性
-### （4）
+  ### （4）class torch.nn.MaxPool2d\(kernel\_size, stride=None, padding=0, dilation=1, return\_indices=False, ceil\_mode=False\)
+
+  对于输入信号的输入通道，提供2维最大池化（max pooling）操作。
+  如果输入的大小是\(N,C,H,W\)，那么输出的大小是$$(N,C,H_{out},W_{out})$$和池化窗口大小\(kH,kW\)的关系是：
+  $$out(N_i, C_j,k)=max^{kH-1}_{m=0}max^{kW-1}_{m=0}input(N_{i},C_j,stride[0]h+m,stride[1]w+n)$$
+
+
+
