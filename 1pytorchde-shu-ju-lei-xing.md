@@ -60,3 +60,7 @@ pytorch的数据类型是`torch.Tensor`，\(`torch.Tensor`是默认的tensor类�
 
 根据可选择的大小和数据新建一个tensor。 如果没有提供参数，将会返回一个空的零维张量。如果提供了`numpy.ndarray`,`torch.Tensor`或`torch.Storage`，将会返回一个有同样参数的tensor.如果提供了python序列，将会从序列的副本创建一个tensor。
 
+### 3、Variable变量
+
+
+
