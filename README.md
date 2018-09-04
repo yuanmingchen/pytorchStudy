@@ -1,3 +1,4 @@
 # My Awesome Book
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+pytorch中文文档：[https://pytorch-cn.readthedocs.io/zh/latest/package\_references/](https://pytorch-cn.readthedocs.io/zh/latest/package_references/)
+

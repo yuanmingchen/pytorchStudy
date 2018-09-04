@@ -111,7 +111,7 @@ bias\(tensor\) - 卷积的偏置系数，大小是（out\_channel）
 最大池化函数，实际上也可以看做是一次卷积计算，它也是有过滤器大小和步长、padding这些参数的，不同的是，过滤器不是进行矩阵乘法运算，而是基于特定的规则（比卷积计算更简单了），最大池化，顾名思义就是取矩阵的最大值来代表这个矩阵，除了最大池化，还有平均池化函数，就是求每个矩阵的平均值作为矩阵的大小：`class torch.nn.AvgPool2d(kernel_size, stride=None, padding=0, ceil_mode=False, count_include_pad=True)`  
 $$out(N_i, C_j,k)=max^{kH-1}_{m=0}max^{kW-1}_{m=0}input(N_{i},C_j,stride[0]h+m,stride[1]w+n)$$
 
-
+### （5）
 
 
 
