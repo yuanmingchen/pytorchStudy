@@ -71,7 +71,7 @@ shape:
 输入输出的计算方式：  
 $$H_{out}=floor((H_{in}+2padding[0]-dilation[0](kernerl_size[0]-1)-1)/stride[0]+1)$$
 
-$$x = y$$
+$$W_{out}=floor((W_{in}+2padding[1]-dilation[1](kernerl_size[1]-1)-1)/stride[1]+1)$$
 
 **说明**  
 `bigotimes`: 表示二维的相关系数计算`stride`: 控制相关系数的计算步长  
@@ -79,6 +79,8 @@ $$x = y$$
 `groups`: 控制输入和输出之间的连接：`group=1`，输出是所有的输入的卷积；`group=2`，此时相当于有并排的两个卷积层，每个卷积层计算输入通道的一半，并且产生的输出是输出通道的一半，随后将这两个输出连接起来。
 
 参数`kernel_size`，`stride,padding`，`dilation`也可以是一个`int`的数据，此时卷积height和width值相同;也可以是一个`tuple`数组，`tuple`的第一维度表示height的数值，tuple的第二维度表示width的数值
+
+weight\(tensor\) - 卷积的权重，大小是
 
 参数：
 
@@ -91,13 +93,9 @@ $$x = y$$
 * groups\(int, optional\) – 从输入通道到输出通道的阻塞连接数
 * bias\(bool, optional\) - 如果bias=True，添加偏置
 
-shape:  
-input: $$(N,C_{in},H\_in,W_{in})$$   
-output: $$(N,C_{out},H_{out},W_{out})$$
+$$$$
 
-$$H_{out}=floor((H_{in}+2padding[0]-dilation[0](kernerl_size[0]-1)-1)/stride[0]+1)$$
-
-$$W_{out}=floor((W_{in}+2padding[1]-dilation[1](kernerl_size[1]-1)-1)/stride[1]+1)$$
+$$$$
 
 ### （3）class torch.nn.ReLU\(inplace=False\)
 
@@ -105,10 +103,11 @@ $$W_{out}=floor((W_{in}+2padding[1]-dilation[1](kernerl_size[1]-1)-1)/stride[1]+
 
 * 输入：$$(N, )$$，代表任意数目附加维度
 * 输出：$$(N, *)$$，与输入拥有同样的shape属性
+
   ### （4）class torch.nn.MaxPool2d\(kernel\_size, stride=None, padding=0, dilation=1, return\_indices=False, ceil\_mode=False\)
 
-  对于输入信号的输入通道，提供2维最大池化（max pooling）操作。
-  如果输入的大小是\(N,C,H,W\)，那么输出的大小是$$(N,C,H_{out},W_{out})$$和池化窗口大小\(kH,kW\)的关系是：
+  对于输入信号的输入通道，提供2维最大池化（max pooling）操作。  
+  如果输入的大小是\(N,C,H,W\)，那么输出的大小是$$(N,C,H_{out},W_{out})$$和池化窗口大小\(kH,kW\)的关系是：  
   $$out(N_i, C_j,k)=max^{kH-1}_{m=0}max^{kW-1}_{m=0}input(N_{i},C_j,stride[0]h+m,stride[1]w+n)$$
 
 
