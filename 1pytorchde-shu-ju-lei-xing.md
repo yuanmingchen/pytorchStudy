@@ -46,7 +46,7 @@ pytorch的数据类型是`torch.Tensor`，\(`torch.Tensor`是默认的tensor类�
 可以用python的索引和切片来获取和修改一个张量tensor中的内容：
 
 ```
->>> x = torch.FloatTensor([[1, 2, 3], [4, 5, 6]])
+>>> x = torch.FloatTensor([[1, 2, 3], [4, 5, 6]]) #一般使用FloatTensor
 >>> print(x[1][2])
 6.0
 >>> x[0][1] = 8
