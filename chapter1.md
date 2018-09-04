@@ -80,7 +80,9 @@ $$W_{out}=floor((W_{in}+2padding[1]-dilation[1](kernerl_size[1]-1)-1)/stride[1]+
 
 参数`kernel_size`，`stride,padding`，`dilation`也可以是一个`int`的数据，此时卷积height和width值相同;也可以是一个`tuple`数组，`tuple`的第一维度表示height的数值，tuple的第二维度表示width的数值
 
-weight\(tensor\) - 卷积的权重，大小是
+weight\(tensor\) - 卷积的权重，大小是\(out\_channels, in\_channels,kernel\_size\)
+
+bias\(tensor\) - 卷积的偏置系数，大小是（out\_channel）
 
 参数：
 
