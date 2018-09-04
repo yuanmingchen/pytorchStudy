@@ -1,3 +1,5 @@
+### [https://blog.csdn.net/ice\_actor/article/details/78648780\#commentBox](https://blog.csdn.net/ice_actor/article/details/78648780#commentBox)这篇博客写的非常清楚了，看完以后再看代码好多了。
+
 # 1、第一章 cnn
 
 首先看一个CNN的实现过程：
@@ -69,9 +71,9 @@ shape:
 输入: $$ (N,C_{in},H_{in},W_{in}) $$  
 输出: $$(N,C_{out},H_{out},W_{out})$$  
 输入输出的计算方式：  
-$$H_{out}=floor((H_{in}+2padding[0]-dilation[0](kernerl_size[0]-1)-1)/stride[0]+1)$$
+$$H_{out}=floor((H_{in}+2padding[0]-dilation[0](kernerl_{size}[0]-1)-1)/stride[0]+1)$$
 
-$$W_{out}=floor((W_{in}+2padding[1]-dilation[1](kernerl_size[1]-1)-1)/stride[1]+1)$$
+$$W_{out}=floor((W_{in}+2padding[1]-dilation[1](kernerl_{size}[1]-1)-1)/stride[1]+1)$$
 
 **说明**  
 `bigotimes`: 表示二维的相关系数计算`stride`: 控制相关系数的计算步长  
@@ -95,10 +97,6 @@ bias\(tensor\) - 卷积的偏置系数，大小是（out\_channel）
 * groups\(int, optional\) – 从输入通道到输出通道的阻塞连接数
 * bias\(bool, optional\) - 如果bias=True，添加偏置
 
-$$$$
-
-$$$$
-
 ### （3）class torch.nn.ReLU\(inplace=False\)
 
 对输入运用修正线性单元函数$${ReLU}(x)= max(0, x)$$，shape：
@@ -106,11 +104,15 @@ $$$$
 * 输入：$$(N, )$$，代表任意数目附加维度
 * 输出：$$(N, *)$$，与输入拥有同样的shape属性
 
-  ### （4）class torch.nn.MaxPool2d\(kernel\_size, stride=None, padding=0, dilation=1, return\_indices=False, ceil\_mode=False\)
+### （4）class torch.nn.MaxPool2d\(kernel\_size, stride=None, padding=0, dilation=1, return\_indices=False, ceil\_mode=False\)
 
-  对于输入信号的输入通道，提供2维最大池化（max pooling）操作。  
-  如果输入的大小是\(N,C,H,W\)，那么输出的大小是$$(N,C,H_{out},W_{out})$$和池化窗口大小\(kH,kW\)的关系是：  
-  $$out(N_i, C_j,k)=max^{kH-1}_{m=0}max^{kW-1}_{m=0}input(N_{i},C_j,stride[0]h+m,stride[1]w+n)$$
+对于输入信号的输入通道，提供2维最大池化（max pooling）操作。  
+如果输入的大小是\(N,C,H,W\)，那么输出的大小是$$(N,C,H_{out},W_{out})$$和池化窗口大小\(kH,kW\)的关系是：  
+$$out(N_i, C_j,k)=max^{kH-1}_{m=0}max^{kW-1}_{m=0}input(N_{i},C_j,stride[0]h+m,stride[1]w+n)$$
+
+
+
+
 
 
 
