@@ -1,4 +1,6 @@
-### [https://blog.csdn.net/ice\_actor/article/details/78648780\#commentBox](https://blog.csdn.net/ice_actor/article/details/78648780#commentBox)这篇博客写的非常清楚了，看完以后再看代码好多了。
+### [https://blog.csdn.net/ice\_actor/article/details/78648780\#commentBox](https://blog.csdn.net/ice_actor/article/details/78648780#commentBox)
+
+### 这篇博客写的非常清楚了，看完以后再看代码好多了。
 
 # 1、第一章 cnn
 
@@ -109,10 +111,4 @@ bias\(tensor\) - 卷积的偏置系数，大小是（out\_channel）
 对于输入信号的输入通道，提供2维最大池化（max pooling）操作。  
 如果输入的大小是\(N,C,H,W\)，那么输出的大小是$$(N,C,H_{out},W_{out})$$和池化窗口大小\(kH,kW\)的关系是：  
 $$out(N_i, C_j,k)=max^{kH-1}_{m=0}max^{kW-1}_{m=0}input(N_{i},C_j,stride[0]h+m,stride[1]w+n)$$
-
-
-
-
-
-
 
