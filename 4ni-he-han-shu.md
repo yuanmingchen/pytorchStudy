@@ -29,9 +29,9 @@ class Net(torch.nn.Module):
 
 这个神经网络十分简单，只有一个输入层和一个输出层，n\_features是输入数据的个数，n\_hidden是输入层的输出个数，同时也是它的下一层——输出层的输入个数，n\_output是输出层的输出个数。
 
-### 函数解析
+### 函数/类介绍
 
-#### （1）torch.nn.Linear函数：
+#### （1）torch.nn.Linear类：
 
 ```
 class torch.nn.Linear(in_features, out_features, bias=True)
