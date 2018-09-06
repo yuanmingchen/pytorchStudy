@@ -127,5 +127,49 @@ FloatTensor([1, 2, 3])
 [torch.FloatTensor of size 5]
 ```
 
+## 4.`torch.nn.functional`
+
+这个模块内含有许多常用的函数，包括激活函数、损失函数等多个函数。
+
+导入模块：
+
+```
+import torch.nn.functional as F
+```
+
+举例：
+
+以relu函数为例：
+
+```py
+torch.nn.functional.relu(input, inplace=False) → Tensor
+```
+
+```py
+import torch.nn.functional as F
+x = F.relu(x)  #x经过激活函数relu处理后赋值给x
+```
+
+还有一些常用的函数
+
+```py
+#线性函数
+torch.nn.functional.linear(input, weight, bias=None)
+
+#损失函数
+torch.nn.functional.nll_loss(input, target, weight=None, size_average=True)
+
+#常用的激活函数
+torch.nn.functional.relu(input, inplace=False)
+torch.nn.functional.tanh(input)
+torch.nn.functional.sigmoid(input)
+torch.nn.functional.softplus(input, beta=1, threshold=20)
+torch.nn.functional.softmax(input)
+```
+
+更多函数请参考：
+
+[https://pytorch-cn.readthedocs.io/zh/latest/package\_references/functional/](https://pytorch-cn.readthedocs.io/zh/latest/package_references/functional/)
+
 
 
