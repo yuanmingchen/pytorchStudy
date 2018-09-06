@@ -24,7 +24,7 @@ class Net(torch.nn.Module):
 #Method2  Sequential是一个类，一个时序容器，可以接受任意个参数，
 # 每个参数是一个处理模块（一层或一个激活函数），各模块会以他们被传入的书序添加到容器中
 net2 = torch.nn.Sequential(
-    torch.nn.Linear(2,10),  #创建一个神经层（隐藏层）
+    torch.nn.Linear(2,10),  #创建一个神经层（输入层）
     torch.nn.ReLU(), #增加一个激励函数
     torch.nn.Linear(10,2),  #输出层
 )
@@ -40,7 +40,7 @@ net2 = torch.nn.Sequential(
 
 `torch.nn.Sequential`这个类，是一个时序容器。Modules 会以他们传入的顺序被添加到容器中。当然，也可以传入一个OrderedDict有序字典。
 
-为了更容易的理解如何使用Sequential, 下面给出了一个例子:
+为了更容易的理解如何使用Sequential, 下面给出了一个例子:
 
 ```py
 # Example of using Sequential
