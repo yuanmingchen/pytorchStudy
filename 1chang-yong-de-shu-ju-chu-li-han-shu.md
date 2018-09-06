@@ -394,6 +394,8 @@ tensor([0., 0.])
 
 返回一个张量，包含从给定参数`means`,`std`的离散正态分布中抽取随机数。 均值`means`是一个张量，包含每个输出元素相关的正态分布的均值。`std`是一个张量，包含每个输出元素相关的正态分布的标准差。 均值和标准差的形状不须匹配，但每个张量的元素个数须相同。
 
+当means与std的形状不一样时，返回的结果与means的形状相同。
+
 #### （2）参数
 
 * means \(Tensor\) – 均值，默认值为0.0
@@ -438,19 +440,27 @@ torch.normal(means=torch.arange(1, 11), std=torch.arange(1, 0, -0.1))
  2.5616
  4.2500
 [torch.FloatTensor of size 5]
+
+#当means与std的形状不一样时，返回的结果与means的形状相同
+import torch
+x = torch.ones(2,4)
+y = torch.ones(1,8)
+out = torch.normal(x,y)
+print(out)
+#输出：
+tensor([[ 0.4471,  2.3478,  0.7964, -1.3335],
+        [ 2.6741,  2.1961, -0.3855, -0.4517]])
 ```
 
 #### （4）个人理解
 
 其实对于means和std的形状并没有太大的限制，限制的是他们含有的数据是否可以一一对应。
 
-means:2\*3    std:1\*6      OK  注意，测试返回的结果的形状与means相同，也就是2\*3。
+means:2\*3    std:1\*6      OK  注意，此时返回的结果的形状与means相同，也就是2\*3。
 
 means:任意形状的张量  std：任意常数或省略  OK
 
 means:任意常数或省略  std：任意形状的张量  OK
 
 只有means和std都是张量，并且含有的数据个数还不一样才不可以。
-
-
 
