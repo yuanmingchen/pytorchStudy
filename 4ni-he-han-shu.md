@@ -71,6 +71,12 @@ class torch.nn.Linear(in_features, out_features, bias=True)
 神经网络的使用也很简单，只需要新建一个神经网络，然后使用合适的优化器，计算误差，然后误差逆向传播，不断调整即可。
 
 ```py
+#制造一些假数据用于训练
+x = torch.unsqueeze(torch.linspace(-1,1,100),dim = 1)  # unsqueeze把一维数据变成二维数据
+y = x.pow(2) + 0.2*torch.rand(x.size())
+x,y = Variable(x),Variable(y)
+
+#正式开始使用神经网络
 net = Net(1,10,1)  #分别代表输入值个数、隐藏层神经元数和输出个数
 
 optimizer = torch.optim.SGD(net.parameters(),lr = 0.5)#选择SGD优化器，lr = 0.5是学习率
@@ -85,6 +91,8 @@ for i in range(100): #一共执行100次优化过程
     loss.backward()   #误差逆向传播
     optimizer.step()  #根据设置的学习率，由优化器进行参数优化
 ```
+
+假数据的定义：
 
 
 

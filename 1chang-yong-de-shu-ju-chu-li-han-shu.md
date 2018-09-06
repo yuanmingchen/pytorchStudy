@@ -171,5 +171,74 @@ torch.nn.functional.softmax(input)
 
 [https://pytorch-cn.readthedocs.io/zh/latest/package\_references/functional/](https://pytorch-cn.readthedocs.io/zh/latest/package_references/functional/)
 
+## 5.unsqueeze函数
+
+```
+torch.unsqueeze(input, dim, out=None)
+```
+
+返回一个新的张量，对输入的制定位置插入维度 1
+
+注意： 返回张量与输入张量共享内存，所以改变其中一个的内容会改变另一个。
+
+如果`dim`为负，则将会被转化\( dim+input.dim\(\)+1\)
+
+#### 参数：
+
+* tensor \(Tensor\) – 输入张量
+* dim \(int\) – 插入维度的索引
+* out \(Tensor, optional\) – 结果张量
+
+#### 举例：
+
+```
+>>> x = torch.Tensor([1, 2, 3, 4])
+>>> torch.unsqueeze(x, 0)
+ 1  2  3  4
+[torch.FloatTensor of size 1x4]
+>>> torch.unsqueeze(x, 1)
+ 1
+ 2
+ 3
+ 4
+[torch.FloatTensor of size 4x1]
+```
+
+上面是官方文档，感觉还是不好理解，下面是我自己的理解：
+
+```
+unsqueeze函数是解压函数，所谓解压函数就是把输入的张量在指定的位置上插入1个维度，还是很难理解吧
+
+以二维张量[[0,1,2],[3,4,5]]为例，由于0维的值一般都为1，我们忽略它，所它是2*3的一个张量
+它可以选择分解的位置为0,1,2这三个位置：2之前，2和3之间，3之后这三个位置，分别记作0,1,2位置
+如果dim为负数，则将会被转化为(dim+input.dim()+1)
+
+何为插入一个维度，我们的x是2*3（从高维到低维）的二维向量，在2号位置插入1个维度意味着让它变成2*3*1
+下面看详细举例
+>>> x = torch.Tensor([[0,1,2],[3,4,5]])
+>>> torch.unsqueeze(x, 0)
+tensor([[[0., 1., 2.],
+         [3., 4., 5.]]])    #变成1*2*3
+>>> torch.unsqueeze(x, 1)
+tensor([[[0., 1., 2.]],
+
+        [[3., 4., 5.]]])   #变成2*1*3
+>>> torch.unsqueeze(x, 2)
+tensor([[[0.],
+         [1.],
+         [2.]],
+         
+        [[3.],
+         [4.],
+         [5.]]])         #变成2*3*1
+我们发现：
+dim = 0维：变成1*2*3，要求第三维为1，其余维不变，直接把矩阵变成只包含一个矩阵的三维张量即可
+dim = 1维：变成2*1*3，第一维不变，第二维变成1，即标量还是标量，
+向量变成单行矩阵，两个矩阵自然变成了一个三维张量
+dim = 2维：变成2*3*1，一二三维都要改变，0维的标量变只有一个数的向量，
+而向量自然而然的就变成了矩阵，矩阵自然而然的变成了三维张量
+注意： 返回张量与输入张量共享内存，所以改变其中一个的内容会改变另一个。
+```
+
 
 
