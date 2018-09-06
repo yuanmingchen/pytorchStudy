@@ -81,9 +81,51 @@ FloatTensor([1, 2, 3])
 
 **注意**:当两个张量形状不匹配时，输入张量的形状会作为输出张量的尺寸。
 
-\(2\)中的add相当于other是一个全为1的张量
+\(2\)中的add相当于other默认是一个全为1的张量
 
-## 3.
+## 3.`torch.linspace(start, end, steps=100, out=None) → Tensor`
+
+#### （1）介绍
+
+返回一个1维张量，包含在区间`start`和`end`上均匀间隔的`steps`个点。 输出1维张量的长度为`steps`。
+
+#### （2）参数
+
+* start \(float\) – 序列的起始点
+* end \(float\) – 序列的最终值
+* steps \(int\) – 在start 和 end间生成的样本数
+* out \(Tensor, optional\) – 结果张量
+
+#### （3）举例
+
+```py
+>>> torch.linspace(3, 10, steps=5)
+
+  3.0000
+  4.7500
+  6.5000
+  8.2500
+ 10.0000
+[torch.FloatTensor of size 5]
+
+>>> torch.linspace(-10, 10, steps=5)
+
+-10
+ -5
+  0
+  5
+ 10
+[torch.FloatTensor of size 5]
+
+>>> torch.linspace(start=-10, end=10, steps=5)
+
+-10
+ -5
+  0
+  5
+ 10
+[torch.FloatTensor of size 5]
+```
 
 
 
