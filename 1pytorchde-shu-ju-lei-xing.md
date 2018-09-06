@@ -62,5 +62,22 @@ pytorch的数据类型是`torch.Tensor`，\(`torch.Tensor`是默认的tensor类�
 
 ### 3、Variable变量
 
+更加详细用法可以参考博客：[https://blog.csdn.net/Quincuntial/article/details/78023298](https://blog.csdn.net/Quincuntial/article/details/78023298)
 
+使用Variable变量类型需要导入包：
+
+```py
+import torch
+from torch.autograd import Variable
+```
+
+新建一个Variable变量类型的方式也很简单：
+
+```py
+tensor = torch.FloatTensor([[1,2],[3,4]])
+
+variable = Variable(tensor,requires_grad = True)#requires_grad用来指定是否需要计算梯度
+```
+
+可以看到，Variable变量需要传入一个Tensor张量类型，其实Variable变量确实和张量确实是差不多的，目前水平粗浅的理解就是Variable变量是可以变化可以修改的Tensor，我们通常使用Variable来表示神经网络中的 参数，而用Tensor作为输入输出数据的格式。
 
