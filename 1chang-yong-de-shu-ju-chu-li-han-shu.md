@@ -149,6 +149,31 @@ FloatTensor([1, 2, 3])
 [torch.FloatTensor of size 3]
 ```
 
+还有一个与torch.arange非常相似的函数是`torch.range(start, end, step=1, out=None) → Tensor`
+
+唯一的不同之处在于它返回的数据是左闭右闭的。
+
+```py
+>>> torch.range(1, 4)
+
+ 1
+ 2
+ 3
+ 4
+[torch.FloatTensor of size 4]
+
+>>> torch.range(1, 4, 0.5)
+
+ 1.0000
+ 1.5000
+ 2.0000
+ 2.5000
+ 3.0000
+ 3.5000
+ 4.0000
+[torch.FloatTensor of size 7]
+```
+
 ## 4.`torch.nn.functional`
 
 这个模块内含有许多常用的函数，包括激活函数、损失函数等多个函数。
@@ -303,7 +328,6 @@ squeeze函数是压缩函数，把输入张量中值为1的维度删除，这个
 >>> y.size()
 (2L, 2L, 1L, 2L)
 
-#举例1：
 >>> x = torch.zeros(2,1,2,1,2)  zeros函数返回一个2*1*2*1*2的全是0的张量
 tensor([[[[[0., 0.]],
 
@@ -328,6 +352,105 @@ tensor([[0.],
 >>> torch.squeeze(x)
 tensor([0., 0.])
 ```
+
+## 7.`torch.ones(*sizes, out=None) → Tensor`
+
+#### （1）介绍：
+
+返回一个全为1 的张量，形状由可变参数`sizes`定义。
+
+#### （2）参数
+
+* sizes \(int...\) – 整数序列，定义了输出形状
+* out \(Tensor, optional\) – 结果张量 
+
+#### （3）举例
+
+```py
+>>> torch.ones(2, 3)
+
+ 1  1  1
+ 1  1  1
+[torch.FloatTensor of size 2x3]
+
+>>> torch.ones(5)
+ 1
+ 1
+ 1
+ 1
+ 1
+[torch.FloatTensor of size 5]
+```
+
+与之类似的产生指定数据的张量的函数还有：
+
+**torch.zeros**，唯一不同之处在于返回的张量数据都为0。
+
+**torch.randn：**返回包含了从区间\[0,1\)的均匀分布中抽取的一组随机数，形状由可变参数`sizes`定义。
+
+## 8、`torch.normal(means, std, out=None)`
+
+#### （1）介绍
+
+返回一个张量，包含从给定参数`means`,`std`的离散正态分布中抽取随机数。 均值`means`是一个张量，包含每个输出元素相关的正态分布的均值。`std`是一个张量，包含每个输出元素相关的正态分布的标准差。 均值和标准差的形状不须匹配，但每个张量的元素个数须相同。
+
+#### （2）参数
+
+* means \(Tensor\) – 均值，默认值为0.0
+* std \(Tensor\) – 标准差，默认值为1.0
+* out \(Tensor\) – 可选的输出张量
+
+#### （3）举例
+
+```py
+#means和std的形状一样，一一对应，返回的结果形状是（1*10）
+torch.normal(means=torch.arange(1, 11), std=torch.arange(1, 0, -0.1))
+
+ 1.5104
+ 1.6955
+ 2.4895
+ 4.9185
+ 4.9895
+ 6.9155
+ 7.3683
+ 8.1836
+ 8.7164
+ 9.8916
+[torch.FloatTensor of size 10]
+
+#means不是张量，而是一个数，那么所有数据都公用同一个均值0.5，返回的数据个数与std的形状相同
+>>> torch.normal(mean=0.5, std=torch.arange(1, 6))
+
+  0.5723
+  0.0871
+ -0.3783
+ -2.5689
+ 10.7893
+[torch.FloatTensor of size 5]
+
+
+#std被省略，使用默认值std = 1.0，返回的结果与means形状相同
+>>> torch.normal(means=torch.arange(1, 6))
+
+ 1.1681
+ 2.8884
+ 3.7718
+ 2.5616
+ 4.2500
+[torch.FloatTensor of size 5]
+```
+
+#### （4）个人理解
+
+其实对于means和std的形状并没有太大的限制，限制的是他们含有的数据是否可以一一对应。
+
+means:2\*3    std:1\*6      OK  注意，测试返回的结果的形状与means相同，也就是2\*3。
+
+means:任意形状的张量  std：任意常数或省略  OK
+
+means:任意常数或省略  std：任意形状的张量  OK
+
+只有means和std都是张量，并且含有的数据个数还不一样才不可以。
 
 
 
