@@ -29,6 +29,41 @@ class Net(torch.nn.Module):
 
 这个神经网络十分简单，只有一个输入层和一个输出层，n\_features是输入数据的个数，n\_hidden是输入层的输出个数，同时也是它的下一层——输出层的输入个数，n\_output是输出层的输出个数。
 
+### 函数解析
+
+#### （1）torch.nn.Linear函数：
+
+```
+class torch.nn.Linear(in_features, out_features, bias=True)
+```
+
+该函数对输入数据做线性变换：$$y = Ax + b$$
+
+**参数：**
+
+* in\_features - 每个输入样本的大小
+* out\_features - 每个输出样本的大小
+* bias - 若设置为False，这层不会学习偏置。默认值：True
+
+**形状：**
+
+* 输入: \(N,in\_features\)
+* 输出： \(N,out\_features\)
+
+**变量：**
+
+* weight-形状为\(out\_features x in\_features\)的模块中可学习的权值
+* bias-形状为\(out\_features\)的模块中可学习的偏置
+
+**举例：**
+
+```py
+>>> m = nn.Linear(20, 30)
+>>> input = autograd.Variable(torch.randn(128, 20))
+>>> output = m(input)
+>>> print(output.size())
+```
+
 ## 3、神经网络的使用
 
 神经网络的使用也很简单，只需要新建一个神经网络，然后使用合适的优化器，计算误差，然后误差逆向传播，不断调整即可。
