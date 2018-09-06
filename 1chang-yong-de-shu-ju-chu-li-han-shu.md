@@ -127,6 +127,28 @@ FloatTensor([1, 2, 3])
 [torch.FloatTensor of size 5]
 ```
 
+这里顺便介绍一个与之很类似的函数`torch.arange(start, end, step=1, out=None) → Tensor`
+
+它的参数与`linspace`是乍一看的，但其实第三个参数不一样，`linspace`的第三个参数是steps，代表划分的个数，而`arange`的第三个参数是step，代表步长，即从`start`到`end`每隔step取一个数，步长默认为1。
+
+另外有一点不一样的是，`linspace`是左闭右闭的，而`arange`是左闭右开的，即取的点包括`start`不包括`end`。
+
+```
+>>> torch.arange(1, 4)  #省略步长的情况，左闭右开
+
+ 1
+ 2
+ 3
+[torch.FloatTensor of size 3]
+
+>>> torch.arange(1, 2.5, 0.5)
+
+ 1.0000
+ 1.5000
+ 2.0000
+[torch.FloatTensor of size 3]
+```
+
 ## 4.`torch.nn.functional`
 
 这个模块内含有许多常用的函数，包括激活函数、损失函数等多个函数。
@@ -298,7 +320,7 @@ tensor([[[0., 0.],
 
         [[0., 0.],
          [0., 0.]]])
-         
+
 #举例2：2维变1维，把一个两行的矩阵压缩成一个向量
 >>> x = torch.zeros(2,1)
 tensor([[0.],
@@ -306,8 +328,6 @@ tensor([[0.],
 >>> torch.squeeze(x)
 tensor([0., 0.])
 ```
-
-
 
 
 
