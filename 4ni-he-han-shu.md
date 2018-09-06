@@ -29,7 +29,7 @@ class Net(torch.nn.Module):
 
 这个神经网络十分简单，只有一个输入层和一个输出层，n\_features是输入数据的个数，n\_hidden是输入层的输出个数，同时也是它的下一层——输出层的输入个数，n\_output是输出层的输出个数。
 
-这个神经网络对于输入x，会输出对应的预测值$$y^'$$
+这个神经网络对于输入x，会输出对应的预测值$$\overline{y}$$。
 
 ### 函数/类介绍
 
@@ -70,7 +70,7 @@ class torch.nn.Linear(in_features, out_features, bias=True)
 
 神经网络的使用也很简单，只需要新建一个神经网络，然后使用合适的优化器，计算误差，然后误差逆向传播，不断调整即可。
 
-```
+```py
 net = Net(1,10,1)  #分别代表输入值个数、隐藏层神经元数和输出个数
 
 optimizer = torch.optim.SGD(net.parameters(),lr = 0.5)#选择SGD优化器，lr = 0.5是学习率
