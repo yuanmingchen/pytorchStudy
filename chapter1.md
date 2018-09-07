@@ -1,8 +1,10 @@
-### [https://blog.csdn.net/ice\_actor/article/details/78648780\#commentBox](https://blog.csdn.net/ice_actor/article/details/78648780#commentBox)
-
-### 这篇博客写的非常清楚了，看完以后再看代码好多了。
+### 
 
 # 1、第一章 cnn
+
+[https://blog.csdn.net/ice\_actor/article/details/78648780\#commentBox](https://blog.csdn.net/ice_actor/article/details/78648780#commentBox)
+
+这篇博客写的非常清楚了，看完以后再看代码好多了。
 
 首先看一个CNN的实现过程：
 

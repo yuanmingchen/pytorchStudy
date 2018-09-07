@@ -95,7 +95,9 @@ y = torch.cat((y0, y1), ).type(torch.LongTensor)
 
 `2*n_data`的意思是把`n_data`中的每个数都乘以二，`n_data`的形状并不会发生改变，还是一个100\*2的张量，返回的结果也是100\*2的张量。
 
-`torch.zeros(100)` ：返回一个包含100个数的张量。
+`torch.zeros(100)` ：返回一个包含100个数的张量，张量里面的数据都为0。
+
+x = torch.cat\(\(x0, x1\), 0\).type\(torch.FloatTensor\)  
 
 
 
