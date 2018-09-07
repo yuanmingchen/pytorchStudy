@@ -422,7 +422,6 @@ torch.normal(means=torch.arange(1, 11), std=torch.arange(1, 0, -0.1))
 
 #means不是张量，而是一个数，那么所有数据都公用同一个均值0.5，返回的数据个数与std的形状相同
 >>> torch.normal(mean=0.5, std=torch.arange(1, 6))
-
   0.5723
   0.0871
  -0.3783
@@ -463,4 +462,48 @@ means:任意形状的张量  std：任意常数或省略  OK
 means:任意常数或省略  std：任意形状的张量  OK
 
 只有means和std都是张量，并且含有的数据个数还不一样才不可以。
+
+## 9、`torch.cat`
+
+#### （1）介绍
+
+`torch.cat(inputs, dimension=0) → Tensor`
+
+cat方法在**给定维度上**对输入的张量序列`seq`进行**连接操作**。`torch.cat()`可以看做`torch.split()`和
+
+`torch.chunk()`的反操作。`cat()`函数可以通过下面例子更好的理解。
+
+#### （2）参数
+
+* inputs \(sequence of Tensors\) – 可以是任意相同Tensor 类型的python 序列
+* dimension \(int, optional\) – 沿着此维连接张量序列。
+
+#### （3）举例
+
+```py
+>>> x = torch.randn(2, 3)
+>>> x
+
+ 0.5983 -0.0341  2.4918
+ 1.5981 -0.5265 -0.8735
+[torch.FloatTensor of size 2x3]
+
+>>> torch.cat((x, x, x), 0)
+
+ 0.5983 -0.0341  2.4918
+ 1.5981 -0.5265 -0.8735
+ 0.5983 -0.0341  2.4918
+ 1.5981 -0.5265 -0.8735
+ 0.5983 -0.0341  2.4918
+ 1.5981 -0.5265 -0.8735
+[torch.FloatTensor of size 6x3]
+
+>>> torch.cat((x, x, x), 1)
+
+ 0.5983 -0.0341  2.4918  0.5983 -0.0341  2.4918  0.5983 -0.0341  2.4918
+ 1.5981 -0.5265 -0.8735  1.5981 -0.5265 -0.8735  1.5981 -0.5265 -0.8735
+[torch.FloatTensor of size 2x9]
+```
+
+
 
